@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aspen Food Co. | Checkout</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #f7f6ef;
+  color: #203b2c;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: #193d2c;
+  color: white;
+  padding: 24px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+main {
+  max-width: 650px;
+  margin: 35px auto;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 15px #0000000b;
+}
+
+h2 { margin-top: 0; }
+
+input {
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0 15px;
+  border: 1px solid #d5dcd4;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  background: #244b35;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.free { color: #258047; }
+
+.total {
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.note {
+  color: #657569;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.hidden { display: none; }
+
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #193d2c;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>ASPEN FOOD CO.</h2>
+  <p>YOUR LOCAL GROCERY SHOP</p>
+</header>
+
+<main>
+
+<div class="card" id="account">
+  <h2>Create your account</h2>
+  <p>Join Aspen Food Co. to place your grocery orders.</p>
+
+  <form id="signup">
+    <input type="text" placeholder="Full name" required>
+    <input type="email" placeholder="Email address" required>
+    <input type="password"
+      placeholder="Demo password – not a real password"
+      required minlength="8">
+
+    <button type="submit">CREATE ACCOUNT</button>
+  </form>
+  <p class="note">
+    Demo only. Account details are not saved or securely
+    registered. Real accounts will need a secure service.
+  </p>
+</div>
+
+<div class="card hidden" id="delivery">
+  <h2>Delivery details</h2>
+  <p>Where should we bring your shopping?</p>
+
+  <form id="deliveryForm">
+    <input type="text" placeholder="Full name" required>
+    <input type="text" placeholder="Delivery address" required>
+    <input type="text" placeholder="Town / Area" required>
+    <input type="text" placeholder="Eircode" required>
+    <input type="tel" placeholder="Phone number" required>
+
+    <button type="submit">CONTINUE TO PAYMENT</button>
+  </form>
+</div>
+
+<div class="card hidden" id="payment">
+  <h2>Order summary</h2>
+
+  <div class="line">
+    <span>Groceries</span>
+    <span id="subtotal">€8.60</span>
+  </div>
+
+  <div class="line">
+    <span>Delivery</span>
+    <span class="free">FREE</span>
+  </div>
+
+  <hr>
+
+  <div class="line total">
+    <span>Total</span>
+    <span id="total">€8.60</span>
+  </div>
+
+  <h3>Payment method</h3>
+  <p>💳 Debit or credit card</p>
+
+  <button onclick="pay()">
+    PAY SECURELY
+  </button>
+
+  <p class="note">
+    Payments will be processed through Stripe Checkout
+    once the real payment integration is installed.
+    No card details are collected on this demo page.
+  </p>
+</div>
+
+</main>
+
+<footer>
+  <h3>ASPEN FOOD CO.</h3>
+  <p>Thank you for shopping locally!</p>
+  <p>© 2026 Aspen Food Co.</p>
+</footer>
+
+<script>
+document.getElementById("signup").onsubmit = function(e) {
+  e.preventDefault();
+  document.getElementById("account").classList.add("hidden");
+  document.getElementById("delivery").classList.remove("hidden");
+};
+
+document.getElementById("deliveryForm").onsubmit = function(e) {
+  e.preventDefault();
+  document.getElementById("delivery").classList.add("hidden");
+  document.getElementById("payment").classList.remove("hidden");
+};
+
+function pay() {
+  alert("Payment is not connected yet. Stripe integration is needed before real orders can be paid.");
+}
+</script>
+
+</body>
+</html>
